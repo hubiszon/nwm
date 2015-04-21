@@ -4,7 +4,7 @@
     "creationData": {
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "projectGuid": "d746979f-741c-4e28-b5ff-1e72234cb5e6",
-      "lastModifiedDate": 1429474219566,
+      "lastModifiedDate": 1429557154991,
       "creationDate": 1429474219466
     },
     "XDK-app-designer": "false",
@@ -43,13 +43,39 @@
         "preferences_": {
           "android-minSdkVersion": "10",
           "android-targetSdkVersion": "19",
-          "android-installLocation": "auto"
+          "android-installLocation": "auto",
+          "Orientation": "portrait"
         },
         "isActive_": true,
         "appName_": "NWM",
         "appID_": "xdk.intel.blank.template",
         "appAccess_": [],
-        "icons_": [],
+        "icons_": [
+          {
+            "relPath": "images/36.png",
+            "density": "ldpi",
+            "height": 36,
+            "width": 36
+          },
+          {
+            "relPath": "images/48.png",
+            "density": "mdpi",
+            "height": 48,
+            "width": 48
+          },
+          {
+            "relPath": "images/72.png",
+            "density": "hdpi",
+            "height": 72,
+            "width": 72
+          },
+          {
+            "relPath": "images/96.png",
+            "density": "xhdpi",
+            "height": 96,
+            "width": 96
+          }
+        ],
         "splashes_": [],
         "addlPermissions_": "",
         "excludedLibraries_": "",
