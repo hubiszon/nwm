@@ -4,7 +4,7 @@
     "creationData": {
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "projectGuid": "d746979f-741c-4e28-b5ff-1e72234cb5e6",
-      "lastModifiedDate": 1429557154991,
+      "lastModifiedDate": 1429660465609,
       "creationDate": 1429474219466
     },
     "XDK-app-designer": "false",
@@ -33,6 +33,20 @@
         "paramvals": {},
         "dependsOn": [],
         "dependedBy": []
+      },
+      {
+        "id": "com.clone.phonegap.plugins.pushplugin",
+        "version": "",
+        "selectedState": "Included",
+        "data": {},
+        "paramvals": {},
+        "dependsOn": [],
+        "dependedBy": [],
+        "custom": "true",
+        "name": "push plugin",
+        "origin": "com.clone.phonegap.plugins.pushplugin",
+        "originType": "cordova.io",
+        "sourceLocation": ""
       }
     ],
     "buildConfigurations": {
