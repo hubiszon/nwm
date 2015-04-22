@@ -1,35 +1,104 @@
-/*
- * Copyright © 2012-2015, Intel Corporation. All rights reserved.
- * Please see the included README.md file for license terms and conditions.
- */
+var diwajs;
+var tokenID = "";
 
+function saveStuff()
+{
+    alert("savin' "+tokenID+" to db");
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://wesolyswiatrobotyki.comxa.com/receive.php?client_id=" + encodeURIComponent(tokenID), false);
+    xhr.send();
+} 
 
-/*jslint browser:true, devel:true, white:true, vars:true */
-/*global $:false, intel:false app:false, dev:false, cordova:false */
+function onNotification(e) {
+    alert('onnotification here - ' + e.event);
+    switch (e.event) {
+        case 'registered':
+            if (e.regid.length > 0) {
+                alert('registration id = ' + e.regid);
+                tokenID = e.regid;      
+                saveStuff();
+            }
+            break;
 
+        case 'message':
+            alert('message = ' + e.message/* + ' msgcnt = ' + e.msgcnt*/);
+            break;
 
+        case 'error':
+            alert('GCM error = ' + e.msg);
+            break;
 
-// This file contains your event handlers, the center of your application.
-// NOTE: see app.initEvents() in init-app.js for event handler initialization code.
-
-function myEventHandler() {
-    "use strict" ;
-
-    var ua = navigator.userAgent ;
-    var str ;
-
-    if( window.Cordova && dev.isDeviceReady.c_cordova_ready__ ) {
-            str = "It worked! Cordova device ready detected at " + dev.isDeviceReady.c_cordova_ready__ + " milliseconds!" ;
+        default:
+            alert('An unknown GCM event has occurred');
+            break;
     }
-    else if( window.intel && intel.xdk && dev.isDeviceReady.d_xdk_ready______ ) {
-            str = "It worked! Intel XDK device ready detected at " + dev.isDeviceReady.d_xdk_ready______ + " milliseconds!" ;
-    }
-    else {
-        str = "Bad device ready, or none available because we're running in a browser." ;
-    }
-
-    alert(str) ;
 }
 
+function funnyfunction() 
+{
+    alert('wut :D');
+    if(device && device.platform)
+    {
+        diwajs = device;
+    }
+    else
+    {
+        diwajs = intel.xdk.device;
+    }
 
-// ...additional event handlers here...
+    window.plugins.pushNotification.unregister(successHandler, errorHandler);
+
+    if (diwajs.platform == "Android") {
+        alert("masz androida.");
+        window.plugins.pushNotification.register(
+            successHandler,
+            errorHandler,
+            {
+                "senderID": "861188438553",
+                "ecb": "onNotification"
+            });
+    }
+    else if (diwajs.platform == "iOS") {
+        window.plugins.pushNotification.register(
+            tokenHandler,
+            errorHandler,
+            {
+                "badge": "true",
+                "sound": "true",
+                "alert": "true",
+                "ecb": "onNotificationAPN"
+            });
+    }
+}
+
+document.addEventListener("deviceready", funnyfunction, false);
+
+function successHandler(result) {
+    alert('result = ' + result);
+}
+
+function errorHandler(error) {
+    alert('error = ' + error);
+}
+
+function tokenHandler(result) {
+    alert('device token = ' + result);
+    tokenID = result;
+} 
+
+
+
+function onNotificationAPN(event) {
+    if (event.alert) {
+        alert(event.alert);
+    }
+
+    if (event.sound) {
+        var snd = new Media(event.sound);
+        snd.play();
+    }
+
+    if (event.badge) {
+        window.plugins.pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
+    }
+}
