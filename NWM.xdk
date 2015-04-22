@@ -4,7 +4,7 @@
     "creationData": {
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "projectGuid": "d746979f-741c-4e28-b5ff-1e72234cb5e6",
-      "lastModifiedDate": 1429660465609,
+      "lastModifiedDate": 1429739218593,
       "creationDate": 1429474219466
     },
     "XDK-app-designer": "false",
@@ -35,7 +35,7 @@
         "dependedBy": []
       },
       {
-        "id": "com.clone.phonegap.plugins.pushplugin",
+        "id": "com.phonegap.plugins.PushPlugin",
         "version": "",
         "selectedState": "Included",
         "data": {},
@@ -43,9 +43,9 @@
         "dependsOn": [],
         "dependedBy": [],
         "custom": "true",
-        "name": "push plugin",
-        "origin": "com.clone.phonegap.plugins.pushplugin",
-        "originType": "cordova.io",
+        "name": "PushPlugin",
+        "origin": "https://github.com/phonegap-build/PushPlugin.git",
+        "originType": "repo",
         "sourceLocation": ""
       }
     ],
@@ -62,8 +62,12 @@
         },
         "isActive_": true,
         "appName_": "NWM",
-        "appID_": "xdk.intel.blank.template",
-        "appAccess_": [],
+        "appID_": "xdk.intel.nwm.nwmapp",
+        "appAccess_": [
+          {
+            "origin": "*"
+          }
+        ],
         "icons_": [
           {
             "relPath": "images/36.png",
